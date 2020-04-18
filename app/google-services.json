@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "833545646647",
+    "firebase_url": "https://weightliflitngv2.firebaseio.com",
+    "project_id": "weightliflitngv2",
+    "storage_bucket": "weightliflitngv2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833545646647:android:0eb83249bb29d4c95985b2",
+        "android_client_info": {
+          "package_name": "com.example.weightliflitngv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833545646647-78i29jhgd5uenoaia97qigjj3nr9i9jv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQEkP1bSBiy4VW1s7XSZz-TjY_UuJFPMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833545646647-78i29jhgd5uenoaia97qigjj3nr9i9jv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

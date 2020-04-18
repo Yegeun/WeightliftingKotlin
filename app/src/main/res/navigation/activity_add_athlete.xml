@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_athlete"
+    app:startDestination="@id/AddAthleteFragment">
+
+    <fragment
+        android:id="@+id/AddAthleteFragment"
+        android:name="com.example.weightliflitngv2.ui.AddAthleteFragment"
+        tools:layout="@layout/add_athlete_fragment"
+        android:label="Authors" />
+</navigation>
