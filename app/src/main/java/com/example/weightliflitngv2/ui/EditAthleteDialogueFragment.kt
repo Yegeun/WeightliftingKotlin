@@ -14,7 +14,9 @@ import com.example.weightliflitngv2.data.Athlete
 import kotlinx.android.synthetic.main.dialogue_fragment_add_athlete.*
 
 
-class AddAthleteDialogueFragment : DialogFragment() {
+class EditAthleteDialogueFragment( // first argument that you pass through
+    private val athlete: Athlete
+) : DialogFragment() {
 
     private lateinit var viewModel: AddAthleteViewModel // create a view model
 
@@ -24,7 +26,7 @@ class AddAthleteDialogueFragment : DialogFragment() {
     ): View? {
         // use the view model of the data that gets passed to save it into the database
         viewModel = ViewModelProviders.of(this).get(AddAthleteViewModel::class.java)
-        return inflater.inflate(R.layout.dialogue_fragment_add_athlete, container, false)
+        return inflater.inflate(R.layout.dialogue_fragment_edit_athlete, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,15 +36,17 @@ class AddAthleteDialogueFragment : DialogFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        edit_text_name.setText(athlete.name)
+
         viewModel.result.observe(viewLifecycleOwner, Observer {
             val message = if(it == null){
-                getString(R.string.athlete_added)
+               "Athlete Profile Updated"// better to do get string from the id!
             }else{
                 getString(R.string.error, it.message)
             }
             Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
             dismiss()
-
         })
 
         button_add_athlete.setOnClickListener{
@@ -53,9 +57,8 @@ class AddAthleteDialogueFragment : DialogFragment() {
                 return@setOnClickListener
             }
 
-            val athlete = Athlete()
             athlete.name = name
-            viewModel.addAthlete(athlete)
+            viewModel.updateAthlete(athlete)
         }
 
     }

@@ -1,5 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.weightliflitngv2.ui
 
+import android.app.AlertDialog
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,9 +12,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 
 import com.example.weightliflitngv2.R
+import com.example.weightliflitngv2.data.Athlete
 import kotlinx.android.synthetic.main.add_athlete_fragment.*
 
-class AddAthleteFragment : Fragment(){
+class AddAthleteFragment : Fragment(), RecyclerViewListener {
 
     private lateinit var viewModel: AddAthleteViewModel
     private val adapter = AddAthleteAdapter()
@@ -27,6 +31,7 @@ class AddAthleteFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        adapter.listener = this
         recycler_view_athletes.adapter = adapter
 
         // TODO: Use the ViewModel
@@ -42,11 +47,25 @@ class AddAthleteFragment : Fragment(){
             adapter.addAthlete(it) //
         })
 
-
-
         button_add.setOnClickListener {
             AddAthleteDialogueFragment()
                 .show(childFragmentManager, "")
+        }
+    }
+
+    override fun itemClicked(view: View, athlete:Athlete){ // this is where you get the listern
+        when(view.id){
+            R.id.button_edit -> {
+                EditAthleteDialogueFragment(athlete).show(childFragmentManager,"")
+            }
+            R.id.button_delete ->{
+                AlertDialog.Builder(requireContext()).also {
+                    it.setTitle("Delete")
+                    it.setPositiveButton("yes"){dialog, which ->
+                        viewModel.deleteAthlete(athlete)
+                    }
+                }.create().show()
+            }
         }
     }
 

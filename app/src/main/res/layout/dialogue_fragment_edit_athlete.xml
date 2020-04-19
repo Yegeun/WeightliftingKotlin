@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
-        android:text="Add Athlete"
+        android:text="Edit Athlete"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -33,7 +33,7 @@
         android:id="@+id/button_add_athlete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Update"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

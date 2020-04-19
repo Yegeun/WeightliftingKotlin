@@ -9,12 +9,14 @@ data class Athlete(
     var coach: String? = null,
     var email: String? = null,
     var name: String? = null,
-    var dated: Date?=null
-){
+    var dated: Date?=null,
+    @get:Exclude
+    var isDeleted: Boolean = false
+)   {
     override fun equals(other: Any?): Boolean { // check if has the same id
-        return if(other is Athlete){
-            other.id ==id
-        }else false
+        return if (other is Athlete) {
+            other.id == id
+        } else false
     }
 
     override fun hashCode(): Int { // create a hash code
@@ -26,3 +28,4 @@ data class Athlete(
         return result
     }
 }
+

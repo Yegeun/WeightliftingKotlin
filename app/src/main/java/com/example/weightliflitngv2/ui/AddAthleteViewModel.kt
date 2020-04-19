@@ -35,6 +35,27 @@ class AddAthleteViewModel : ViewModel() {
                 }
             }
     }
+    fun updateAthlete(athlete: Athlete){
+        dbAthletes.child(athlete.id!!).setValue(athlete)
+            .addOnCompleteListener {
+                if(it.isSuccessful){
+                    _result.value = null
+                }else{
+                    _result.value = it.exception
+                }
+            }
+    }
+
+    fun deleteAthlete(athlete: Athlete){
+        dbAthletes.child(athlete.id!!).setValue(athlete)
+            .addOnCompleteListener {
+                if(it.isSuccessful){
+                    _result.value = null
+                }else{
+                    _result.value = it.exception
+                }
+            }
+    }
 
     private val childEventListener = object : ChildEventListener{
         override fun onCancelled(error: DatabaseError) {
@@ -46,7 +67,9 @@ class AddAthleteViewModel : ViewModel() {
         }
 
         override fun onChildChanged(snapshot: DataSnapshot, p1: String?) {
-            TODO("Not yet implemented")
+            val athlete = snapshot.getValue(Athlete::class.java)
+            athlete?.id = snapshot.key
+            _athlete.value = athlete
         }
 
         override fun onChildAdded(snapshot: DataSnapshot, p1: String?) {
@@ -55,10 +78,12 @@ class AddAthleteViewModel : ViewModel() {
             _athlete.value = athlete
         }
 
-        override fun onChildRemoved(snapshot: DataSnapshot) {
-            TODO("Not yet implemented")
+        override fun onChildRemoved(snapshot: DataSnapshot) { // deleted confirmation
+            val athlete = snapshot.getValue(Athlete::class.java)
+            athlete?.id = snapshot.key
+            athlete?.isDeleted = true
+            _athlete.value = athlete
         }
-
     }
     fun getRealtimeUpdate(){
         dbAthletes.addChildEventListener(childEventListener)
@@ -67,7 +92,6 @@ class AddAthleteViewModel : ViewModel() {
     fun fetchAthletes(){
         dbAthletes.addListenerForSingleValueEvent(object :ValueEventListener {
             override fun onCancelled(error: DatabaseError){}
-
             override fun onDataChange(snapshot: DataSnapshot){
                 if(snapshot.exists()){
                     val athletes= mutableListOf<Athlete>()
@@ -81,6 +105,8 @@ class AddAthleteViewModel : ViewModel() {
             }
         })
     }
+
+
 
     override fun onCleared(){
         super.onCleared()
