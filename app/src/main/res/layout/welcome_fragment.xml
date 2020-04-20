@@ -3,11 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Welcome">
-
-    <TextView
+    tools:context=".ui.WelcomeFragment">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello watssup" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="288dp"
+            android:layout_height="match_parent"
+            android:text="Hello watssup" />
+
+        <Button
+            android:id="@+id/button_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PROFILE" />
+    </LinearLayout>
 
 </FrameLayout>

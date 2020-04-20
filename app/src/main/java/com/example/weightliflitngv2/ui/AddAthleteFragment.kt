@@ -55,6 +55,7 @@ class AddAthleteFragment : Fragment(), RecyclerViewListener {
         }
     }
 
+
     override fun itemClicked(view: View, athlete:Athlete){ // this is where you get the listern
         when(view.id){
             R.id.button_edit -> {
@@ -72,3 +73,4 @@ class AddAthleteFragment : Fragment(), RecyclerViewListener {
     }
 
 }
+

@@ -15,9 +15,10 @@
 
         <fragment
             android:id="@+id/fragment2"
-            android:name="com.example.weightliflitngv2.ui.Welcome"
+            android:name="com.example.weightliflitngv2.ui.WelcomeFragment"
             android:layout_width="match_parent"
             android:layout_height="57dp" />
+
     </LinearLayout>
 
     <Button
