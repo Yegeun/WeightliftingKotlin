@@ -1,4 +1,4 @@
-@file:Suppress("DEPRECATION")
+
 
 package com.example.weightliflitngv2.ui
 
@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 
 import com.example.weightliflitngv2.R
 import com.example.weightliflitngv2.data.Athlete
@@ -24,7 +25,7 @@ class AddAthleteFragment : Fragment(), RecyclerViewListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProviders.of(this).get(AddAthleteViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(AddAthleteViewModel::class.java)
         return inflater.inflate(R.layout.add_athlete_fragment, container, false)
     }
 
@@ -36,6 +37,7 @@ class AddAthleteFragment : Fragment(), RecyclerViewListener {
 
         // TODO: Use the ViewModel
         viewModel.fetchAthletes()
+        // viewModel.fetchFilteredAuthors(6) use this lines to fetch specific athletes
         viewModel.getRealtimeUpdate()
 
         viewModel.athletes.observe(viewLifecycleOwner, Observer {

@@ -52,7 +52,6 @@ class AddAthleteDialogueFragment : DialogFragment() {
                 input_layout_name.error = getString(R.string.error_field)
                 return@setOnClickListener
             }
-
             val athlete = Athlete()
             athlete.name = name
             viewModel.addAthlete(athlete)

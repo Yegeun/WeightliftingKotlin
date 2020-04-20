@@ -9,11 +9,11 @@ data class Athlete(
     var coach: String? = null,
     var email: String? = null,
     var name: String? = null,
-    var dated: Date?=null,
+    var dated: Date?=null, // could be todays date
     @get:Exclude
     var isDeleted: Boolean = false
 )   {
-    override fun equals(other: Any?): Boolean { // check if has the same id
+    override fun equals(other: Any?): Boolean { // check if has the same id or not
         return if (other is Athlete) {
             other.id == id
         } else false
