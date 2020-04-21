@@ -26,7 +26,7 @@ class AddAthleteViewModel : ViewModel() {
     fun addAthlete(athlete: Athlete){
         athlete.id = dbAthletes.push().key
         dbAthletes.child(athlete.id!!).setValue(athlete) // db athletes.child(is the save of the id)
-        // . set value is the what it saves too
+        // * set value is the what it saves too
             .addOnCompleteListener { // when the complete listener is completed
                 if(it.isSuccessful){
                     _result.value = null

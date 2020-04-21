@@ -42,7 +42,6 @@ class AddAthleteDialogueFragment : DialogFragment() {
             }
             Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
             dismiss()
-
         })
 
         button_add_athlete.setOnClickListener{
