@@ -27,20 +27,30 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <Switch
-            android:id="@+id/switch_coach"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Coach" />
-
-        <Switch
-            android:id="@+id/switch_athlete"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Athlete" />
     </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radio_profile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_coach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Coach"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:id="@+id/radio_athlete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Athlete"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
 
 
 </LinearLayout>
