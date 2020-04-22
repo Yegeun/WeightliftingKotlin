@@ -1,14 +1,18 @@
 package com.example.weightliflitngv2.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.weightliflitngv2.data.Athlete
 import com.example.weightliflitngv2.data.NODE_ATHLETES
 import com.google.firebase.database.*
-import java.lang.Exception
+
 
 class AddAthleteViewModel : ViewModel() {
+
+
     private val dbAthletes = FirebaseDatabase.getInstance().getReference(NODE_ATHLETES) // reference for each node Athletes talk
 
     private val _athletes = MutableLiveData<List<Athlete>>() // this relates to the fetch athletes
