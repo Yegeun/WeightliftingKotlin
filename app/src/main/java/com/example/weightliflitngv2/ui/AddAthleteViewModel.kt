@@ -1,7 +1,5 @@
 package com.example.weightliflitngv2.ui
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,8 +9,6 @@ import com.google.firebase.database.*
 
 
 class AddAthleteViewModel : ViewModel() {
-
-
     private val dbAthletes = FirebaseDatabase.getInstance().getReference(NODE_ATHLETES) // reference for each node Athletes talk
 
     private val _athletes = MutableLiveData<List<Athlete>>() // this relates to the fetch athletes
@@ -61,8 +57,8 @@ class AddAthleteViewModel : ViewModel() {
             }
     }
 
-    fun fetchFilteredAuthors(index: Int) {
-        val dbAuthors =
+    fun fetchFilteredAuthors(index: Int, coach_email:String) {
+        val dbAthlete =
             when (index) {
                 1 ->
                     //#1 SELECT * FROM Authors
@@ -76,9 +72,8 @@ class AddAthleteViewModel : ViewModel() {
                 3 ->
                     //#3 SELECT * FROM Authors WHERE city = ?
                     FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
-                        .orderByChild("city")
-                        .equalTo("Hyderabad")
-
+                        .orderByChild(coach_email)
+                        .equalTo("Coach")
                 4 ->
                     //#4 SELECT * FROM Authors LIMIT 2
                     FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)

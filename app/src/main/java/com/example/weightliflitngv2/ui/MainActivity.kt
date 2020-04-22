@@ -7,21 +7,22 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.example.weightliflitngv2.R
+import com.example.weightliflitngv2.data.NODE_ATHLETES
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var sharedPreferences:SharedPreferences
-
-
+    lateinit var email: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val mSharedPreference: SharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(baseContext)
-        val email = mSharedPreference.getString("email", null)
+        email = mSharedPreference.getString("email", null).toString()
         Toast.makeText(applicationContext,email,Toast.LENGTH_SHORT).show()
-//        val coach_email = sharedPref.getString("email", null)
+        NODE_ATHLETES+=email
+
 
         buttonAdd.setOnClickListener(){
             startActivity(Intent( applicationContext, AddAthlete::class.java ))

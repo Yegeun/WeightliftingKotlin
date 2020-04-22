@@ -17,8 +17,14 @@ class ProfileActivity : AppCompatActivity() {
             val newFragment = ProfileCoachDialogue()
             newFragment.show(ft, "")
         }
+        button_profile_athlete.setOnClickListener{
+            val ft = supportFragmentManager.beginTransaction()
+            val newFragment = ProfileAthleteDialogue()
+            newFragment.show(ft, "")
+        }
     }
 }
+
 
 
 
