@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.example.weightliflitngv2.R
 import com.example.weightliflitngv2.data.NODE_ATHLETES
+import com.example.weightliflitngv2.data.NODE_COACH_EMAIL
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             PreferenceManager.getDefaultSharedPreferences(baseContext)
         email = mSharedPreference.getString("email", null).toString()
         Toast.makeText(applicationContext,email,Toast.LENGTH_SHORT).show()
-        NODE_ATHLETES+=email
+        NODE_COACH_EMAIL=email
 
 
         buttonAdd.setOnClickListener(){

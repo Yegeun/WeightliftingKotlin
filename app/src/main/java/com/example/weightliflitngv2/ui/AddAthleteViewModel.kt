@@ -72,7 +72,7 @@ class AddAthleteViewModel : ViewModel() {
                 3 ->
                     //#3 SELECT * FROM Authors WHERE city = ?
                     FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
-                        .orderByChild(coach_email)
+                        .orderByChild("email")
                         .equalTo("Coach")
                 4 ->
                     //#4 SELECT * FROM Authors LIMIT 2
@@ -168,8 +168,6 @@ class AddAthleteViewModel : ViewModel() {
             }
         })
     }
-
-
 
     override fun onCleared(){
         super.onCleared()

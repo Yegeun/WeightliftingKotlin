@@ -16,27 +16,20 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.weightliflitngv2.R
 import com.example.weightliflitngv2.data.Athlete
 import com.example.weightliflitngv2.data.NODE_ATHLETES
+import com.example.weightliflitngv2.data.NODE_COACH_EMAIL
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.dialogue_fragment_add_athlete.*
 
 
 class AddAthleteDialogueFragment : DialogFragment() {
-    private val dbAthletes = FirebaseDatabase.getInstance().getReference(NODE_ATHLETES) // reference for each node Athletes talk
-
-    private val _athlete = MutableLiveData<Athlete>() // this relates to the fetch athletes
-    val athlete: LiveData<Athlete>
-        get() =_athlete
-
-    private val _result = MutableLiveData<Exception?>()
-    private val result: LiveData<Exception?>
-        get() = _result
+    private lateinit var viewModel: AddAthleteViewModel // create a view model
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // use the view model of the data that gets passed to save it into the database
-
+        viewModel = ViewModelProvider(this).get(AddAthleteViewModel::class.java)
         return inflater.inflate(R.layout.dialogue_fragment_add_athlete, container, false)
     }
 
@@ -48,45 +41,32 @@ class AddAthleteDialogueFragment : DialogFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val pref: SharedPreferences =
+            requireActivity().getPreferences(Context.MODE_PRIVATE)
 
-       result.observe(viewLifecycleOwner, Observer {
-            val message = if(it == null){
+        viewModel.result.observe(viewLifecycleOwner, Observer {
+            val message = if (it == null) {
                 getString(R.string.athlete_added)
-            }else{
+            } else {
                 getString(R.string.error, it.message)
             }
-            Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
             dismiss()
         })
 
-        button_add_athlete.setOnClickListener{
+        button_add_athlete.setOnClickListener {
             val name = edit_text_name.text.toString().trim()
 
-            if(name.isEmpty()){ //check if they are a coach if it has a name
+            if (name.isEmpty()) { //check if they are a coach if it has a name
                 input_layout_name.error = getString(R.string.error_field)
                 return@setOnClickListener
             }
             val athlete = Athlete()
-
             athlete.name = name
-            addAthlete(athlete)
+            athlete.coach = NODE_COACH_EMAIL
+            viewModel.addAthlete(athlete)
+
         }
-
     }
-
-
-    fun addAthlete(athlete: Athlete){
-        athlete.id = dbAthletes.push().key
-        dbAthletes.child(athlete.id!!).setValue(athlete) // db athletes.child(is the save of the id)
-            // * set value is the what it saves too
-            .addOnCompleteListener { // when the complete listener is completed
-                if(it.isSuccessful){
-                    _result.value = null
-                } else {
-                    _result.value = it.exception
-                }
-            }
-    }
-
-
 }
+

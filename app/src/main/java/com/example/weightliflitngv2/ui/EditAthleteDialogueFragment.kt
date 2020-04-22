@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.weightliflitngv2.R
 import com.example.weightliflitngv2.data.Athlete
@@ -25,7 +26,7 @@ class EditAthleteDialogueFragment( // first argument that you pass through
         savedInstanceState: Bundle?
     ): View? {
         // use the view model of the data that gets passed to save it into the database
-        viewModel = ViewModelProviders.of(this).get(AddAthleteViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(AddAthleteViewModel::class.java)
         return inflater.inflate(R.layout.dialogue_fragment_edit_athlete, container, false)
     }
 

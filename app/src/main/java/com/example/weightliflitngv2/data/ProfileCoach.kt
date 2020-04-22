@@ -14,4 +14,5 @@ data class ProfileCoach (
             other.id == id
         } else false
     }
+
 }

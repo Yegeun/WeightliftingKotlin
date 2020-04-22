@@ -5,14 +5,6 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-fun main(args: Array<String>) {
-
-    val current = LocalDateTime.now()
-
-    val formatter = DateTimeFormatter.BASIC_ISO_DATE
-    val formatted = current.format(formatter)
-
-}
 data class Athlete(
     @get:Exclude
     var id: String? = null,
