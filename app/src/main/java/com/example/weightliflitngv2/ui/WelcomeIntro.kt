@@ -11,14 +11,11 @@ class WelcomeIntro: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.webactvity)
-        webView = findViewById(R.id.webView)
-        webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                view?.loadUrl(url)
-                return true
-            }
-        }
-        webView.loadUrl("https://www.google.co.in/")
+        webView = findViewById<WebView>(R.id.webView)
+        webView.webViewClient = WebViewClient()
+        webView.loadUrl("file:///android_asset/intro.html")
     }
 }
+//dynamic media hmtl
