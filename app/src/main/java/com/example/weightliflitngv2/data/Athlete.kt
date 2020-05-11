@@ -11,7 +11,6 @@ data class Athlete(
     var coach: String? = null,
     var name: String? = null,
     var email: String? = null,
-    var dated: Date?= null, // could be todays date
     @get:Exclude
     var isDeleted: Boolean = false
 )   {
@@ -26,7 +25,6 @@ data class Athlete(
         result = 31 * result + (coach?.hashCode() ?: 0)
         result = 31 * result + (email?.hashCode() ?: 0)
         result = 31 * result + (name?.hashCode() ?: 0)
-        result = 31 * result + (dated?.hashCode() ?: 0)
         return result
     }
 }

@@ -1,6 +1,5 @@
 package com.example.weightliflitngv2.ui
 
-import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -43,8 +42,10 @@ class ProfileCoachDialogue : DialogFragment() {
         super.onActivityCreated(savedInstanceState)
 
         val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
-        val coach_email = prefs.getString("email", null)
-        edit_text_coach_email.setText(coach_email)
+        val coachEmail = prefs.getString("email", null)
+        if(edit_text_coach_email!=null){
+            edit_text_coach_email.setText(coachEmail)
+        }
 
         button_save_profile.setOnClickListener{
             val email=edit_text_coach_email.text.toString().trim()
@@ -72,10 +73,6 @@ class ProfileCoachDialogue : DialogFragment() {
                     _result.value = it.exception
                 }
             }
-
-    }
-    fun save(){
-
 
     }
 }

@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.ExerciseActivity" />
         <activity android:name=".ui.ProfileActivity" />
-        <activity android:name=".ui.WelcomeIntro" />
+        <activity android:name=".ui.WelcomeIndex" />
         <activity android:name=".ui.AddAthlete" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>

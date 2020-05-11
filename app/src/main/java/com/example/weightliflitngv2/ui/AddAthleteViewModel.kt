@@ -23,8 +23,8 @@ class AddAthleteViewModel : ViewModel() {
     val result:LiveData<Exception?>
         get() = _result
 
-    fun addAthlete(athlete: Athlete){
-        athlete.id = dbAthletes.push().key
+    fun addAthlete(athlete: Athlete,email:String){
+        athlete.id = email
         dbAthletes.child(athlete.id!!).setValue(athlete) // db athletes.child(is the save of the id)
         // * set value is the what it saves too
             .addOnCompleteListener { // when the complete listener is completed

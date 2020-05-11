@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.weightliflitngv2.R
 import com.example.weightliflitngv2.data.Athlete
 import com.example.weightliflitngv2.data.NODE_ATHLETES
+import com.example.weightliflitngv2.data.NODE_ATHLETE_EMAIL
 import com.example.weightliflitngv2.data.NODE_COACH_EMAIL
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.dialogue_fragment_add_athlete.*
@@ -56,6 +57,9 @@ class AddAthleteDialogueFragment : DialogFragment() {
 
         button_add_athlete.setOnClickListener {
             val name = edit_text_name.text.toString().trim()
+            var email = edit_text_athlete_email.text.toString().trim()
+            //https://stackoverflow.com/questions/50267646/kotlin-replace-multiple-characters-all-in-string
+            email = email.replace(Regex("""[@,.]"""), "_") // replaces with underscore so it can save it
 
             if (name.isEmpty()) { //check if they are a coach if it has a name
                 input_layout_name.error = getString(R.string.error_field)
@@ -64,7 +68,8 @@ class AddAthleteDialogueFragment : DialogFragment() {
             val athlete = Athlete()
             athlete.name = name
             athlete.coach = NODE_COACH_EMAIL
-            viewModel.addAthlete(athlete)
+            athlete.email = email
+            viewModel.addAthlete(athlete, email)
 
         }
     }

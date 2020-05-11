@@ -9,6 +9,7 @@ import com.example.weightliflitngv2.data.Athlete
 import kotlinx.android.synthetic.main.recycler_view_athlete.view.*
 
 class AddAthleteAdapter : RecyclerView.Adapter<AddAthleteAdapter.AddAthleteViewModel>(){
+    //simpifly coding
 
     private var athletes = mutableListOf<Athlete>()
     var listener: RecyclerViewListener? = null

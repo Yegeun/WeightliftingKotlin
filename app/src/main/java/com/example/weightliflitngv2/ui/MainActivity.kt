@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         val mSharedPreference: SharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(baseContext)
         email = mSharedPreference.getString("email", null).toString()
+
         NODE_COACH_EMAIL=email
 
         if(!hasNetworkAvailable(this)){
