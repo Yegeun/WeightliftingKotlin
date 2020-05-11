@@ -30,6 +30,9 @@ class WelcomeFragment : Fragment() {
         button_profile.setOnClickListener(){
             startActivity(Intent(activity, ProfileActivity::class.java))
         }
+        button_help.setOnClickListener(){
+            startActivity((Intent(activity,WelcomeIntro::class.java)))
+            }
     }
 }
 
