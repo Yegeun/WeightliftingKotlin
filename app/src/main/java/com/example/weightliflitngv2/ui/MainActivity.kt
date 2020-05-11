@@ -49,11 +49,11 @@ class MainActivity : AppCompatActivity() {
 //            // Apply the adapter to the spinner
 //            spinner.adapter = adapter
 //        }
-
-
         buttonAdd.setOnClickListener(){
             startActivity(Intent( applicationContext, AddAthlete::class.java ))
         }
+
+
     }
     // Kotlin code sample
 
@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("hello", "hasNetworkAvailable: ${(network != null)}")
         return (network != null)
     }
+
     // Method to show an alert dialog with yes, no and cancel button
     private fun showDialog(){
         // Late initialize an alert dialog object
@@ -88,7 +89,6 @@ class MainActivity : AppCompatActivity() {
                 DialogInterface.BUTTON_NEGATIVE -> toast("Negative/No button clicked.")
             }
         }
-
 
         // Set the alert dialog positive/yes button
         builder.setPositiveButton("YES",dialogClickListener)

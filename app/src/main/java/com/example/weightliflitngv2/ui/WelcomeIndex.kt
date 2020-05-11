@@ -6,7 +6,7 @@ import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.example.weightliflitngv2.R
 
-class WelcomeIntro: AppCompatActivity() {
+class WelcomeIndex: AppCompatActivity() {
     private lateinit var webView: WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +15,7 @@ class WelcomeIntro: AppCompatActivity() {
         setContentView(R.layout.webactvity)
         webView = findViewById<WebView>(R.id.webView)
         webView.webViewClient = WebViewClient()
-        webView.loadUrl("file:///android_asset/intro.html")
+        webView.loadUrl("file:///android_asset/index.html")
     }
 }
 //dynamic media hmtl
