@@ -7,7 +7,7 @@ import com.example.weightliflitngv2.data.Athlete
 import com.example.weightliflitngv2.data.NODE_ATHLETES
 import com.google.firebase.database.*
 
-
+//simply coding
 class AddAthleteViewModel : ViewModel() {
     private val dbAthletes = FirebaseDatabase.getInstance().getReference(NODE_ATHLETES) // reference for each node Athletes talk
 
@@ -57,47 +57,7 @@ class AddAthleteViewModel : ViewModel() {
             }
     }
 
-    fun fetchFilteredAuthors(index: Int, coach_email:String) {
-        val dbAthlete =
-            when (index) {
-                1 ->
-                    //#1 SELECT * FROM Authors
-                    FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
 
-                2 ->
-                    //#2 SELECT * FROM Authors WHERE id = ?
-                    FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
-                        .child("-M-3fFw3GbovXWguSjp8")
-
-                3 ->
-                    //#3 SELECT * FROM Authors WHERE city = ?
-                    FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
-                        .orderByChild("email")
-                        .equalTo("Coach")
-                4 ->
-                    //#4 SELECT * FROM Authors LIMIT 2
-                    FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
-                        .limitToFirst(2)
-
-                5 ->
-                    //#5 SELECT * FROM Authors WHERE votes < 500
-                    FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
-                        .orderByChild("votes")
-                        .endAt(500.toDouble())
-
-                6 ->
-                    //#6 SELECT * FROM Artists WHERE name LIKE "A%"
-                    FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
-                        .orderByChild("name")
-                        .startAt("A")
-                        .endAt("A\uf8ff")
-
-                7 ->
-                    //#7 SELECT * FROM Artists Where votes < 500 AND city = Bangalore
-                    // not possible you have to combine database
-                    FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
-                else -> FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
-            }
         // to use this call the function using view model get rid of updates and and dbathletes data change
         // and
 //    dbAthletes.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -117,7 +77,7 @@ class AddAthleteViewModel : ViewModel() {
 //            }// ust hthis if using complete list of things
 //        }
 //    })
-    }
+
 
 
     private val childEventListener = object : ChildEventListener{
@@ -175,4 +135,5 @@ class AddAthleteViewModel : ViewModel() {
     }// this kills to stop listening
 
 }
+
 

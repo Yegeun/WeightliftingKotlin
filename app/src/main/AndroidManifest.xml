@@ -9,15 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.ProfileActivity"></activity>
+        <activity android:name=".ui.ExerciseActivity"></activity>
+        <activity android:name=".ui.ProfileActivity" />
         <activity android:name=".ui.AddAthlete" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver
+            android:name=".ui.ProfileActivity$Receiver"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
+
     </application>
 
 </manifest>
