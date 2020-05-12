@@ -5,12 +5,14 @@ import android.app.*
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import com.example.weightliflitngv2.R
 import kotlinx.android.synthetic.main.activity_profile.*
 import java.text.SimpleDateFormat
@@ -97,7 +99,7 @@ class ProfileActivity : AppCompatActivity() {
 
                     val millisTime = (h*3600000)+(m*60000)+ap
 
-                    Toast.makeText(this, millisTime.toLong().toString(), Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this, millisTime.toLong().toString(), Toast.LENGTH_SHORT).show()
 
                     alarmManager.setInexactRepeating(
                         AlarmManager.RTC_WAKEUP,
@@ -106,37 +108,40 @@ class ProfileActivity : AppCompatActivity() {
                         pendingIntent
                     )
 
-
-//                    val intent2 = Intent(this, LauncherActivity::class.java)
-//                    val pendingIntent2 =
-//                        PendingIntent.getActivity(this, 0, intent2, PendingIntent.FLAG_UPDATE_CURRENT)
-//                    notificationManager =
-//                        getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//                    notificationChannel =
-//                        NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
-//                    notificationChannel.enableLights(true)
-//                    notificationChannel.lightColor = Color.GREEN
-//                    notificationChannel.enableVibration(false)
-//                    notificationManager.createNotificationChannel(notificationChannel)
-//                    builder = Notification.Builder(this, channelId)
-//                        .setContentTitle("Reminder")
-//                        .setContentText("LOG IN WEIGHTS")
-//                        .setSmallIcon(R.mipmap.ic_launcher_round)
-//                        .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.mipmap.ic_launcher))
-//                        .setContentIntent(pendingIntent2)
-//                    notificationManager.notify(1234, builder.build())
-
-
                     textVeiw_time.text = timeFormat.format(selectedTime.time)
                     Log.d("ProfileActivity", "Create: " + Date().toString())
                     //TODO save at shared prefrences
+                    //save
+//                    val editor = prefs.edit()
+//                    editor.putString("email", coachProfile.email)
+//                    editor.apply()
+//                    //call
+//                    val mSharedPreference: SharedPreferences =
+//                        PreferenceManager.getDefaultSharedPreferences(baseContext)
+//                    email = mSharedPreference.getString("email", null).toString(
                 },
                 now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true
             )
             timePicker.show()
-
-
         }
+//        fun notify(){
+//            val intent2 = Intent(this, LauncherActivity::class.java)
+//            val pendingIntent2 = PendingIntent.getActivity(this, 0, intent2, PendingIntent.FLAG_UPDATE_CURRENT)
+//            notificationManager =
+//                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//            notificationChannel =
+//                NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
+//            notificationChannel.enableLights(true)
+//            notificationChannel.lightColor = Color.GREEN
+//            notificationChannel.enableVibration(false)
+//            notificationManager.createNotificationChannel(notificationChannel)
+//            builder = Notification.Builder(this, channelId)
+//                .setContentTitle("Reminder")
+//                .setContentText("LOG IN WEIGHTS")
+//                .setSmallIcon(R.mipmap.ic_launcher_round)
+//                .setContentIntent(pendingIntent2)
+//            notificationManager.notify(1234, builder.build())
+//        }
 
         button_cancel.setOnClickListener {
             val intent = Intent(context, Receiver::class.java)

@@ -32,6 +32,9 @@ class AddAthleteAdapter : RecyclerView.Adapter<AddAthleteAdapter.AddAthleteViewM
         holder.view.button_delete.setOnClickListener {
             listener?.itemClicked(it, athletes[position])
         }
+        holder.view.button_view_exercise.setOnClickListener {
+            listener?.itemClicked(it, athletes[position])
+        }
     }
 
     fun setAthletes(athletes: List<Athlete>){

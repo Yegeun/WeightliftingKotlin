@@ -3,13 +3,13 @@
 package com.example.weightliflitngv2.ui
 
 import android.app.AlertDialog
-import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
+import android.app.ProgressDialog.show
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
@@ -43,7 +43,6 @@ class AddAthleteFragment : Fragment(), RecyclerViewListener {
 
         viewModel.athletes.observe(viewLifecycleOwner, Observer {
             adapter.setAthletes(it) //
-
         })
             //singular athlete
         viewModel.athlete.observe(viewLifecycleOwner, Observer {
@@ -70,8 +69,9 @@ class AddAthleteFragment : Fragment(), RecyclerViewListener {
                     }
                 }.create().show()
             }
-            R.id.button_view ->{
-
+            R.id.button_view_exercise -> {
+                AddAthleteViewDialogueFragment(athlete).show(childFragmentManager,"")
+                Toast.makeText(context, "You are now viewing todays data", Toast.LENGTH_SHORT).show()
             }
         }
     }

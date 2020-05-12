@@ -16,6 +16,7 @@ import com.example.weightliflitngv2.R
 import com.example.weightliflitngv2.data.NODE_ATHLETE_EMAIL
 import com.example.weightliflitngv2.data.NODE_COACH_EMAIL
 import com.example.weightliflitngv2.data.NODE_DATE
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var email: String
     lateinit var athleteEmail:String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val mSharedPreference: SharedPreferences =
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
 
         athleteEmail = athleteEmail.replace(Regex("""[@,.]"""), "_") // replaces with underscore so it can save it
 
+        //Offline Database maximum of 10mb
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        val athletes = FirebaseDatabase.getInstance().getReference("athletes")
+        athletes.keepSynced(true)
 
         //updates current time and date
         val current = LocalDateTime.now()
@@ -46,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         NODE_COACH_EMAIL=email
         NODE_ATHLETE_EMAIL=athleteEmail
 
-        toast(athleteEmail)
+//        toast(athleteEmail)
         if(!hasNetworkAvailable(this)){
             showDialog()
         }
@@ -130,3 +135,4 @@ class MainActivity : AppCompatActivity() {
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
+

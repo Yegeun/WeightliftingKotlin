@@ -15,8 +15,8 @@ import com.example.weightliflitngv2.data.Athlete
 import kotlinx.android.synthetic.main.dialogue_fragment_add_athlete.*
 
 
-class EditAthleteDialogueFragment( // first argument that you pass through
-    private val athlete: Athlete
+class EditAthleteDialogueFragment(
+    private val athlete: Athlete // first argument that you pass through
 ) : DialogFragment() {
 
     private lateinit var viewModel: AddAthleteViewModel // create a view model

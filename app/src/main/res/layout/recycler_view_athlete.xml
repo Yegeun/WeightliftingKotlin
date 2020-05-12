@@ -35,7 +35,7 @@
             android:layout_marginBottom="0dp"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/button_view"
+                android:id="@+id/button_view_exercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="EDIT"
+                android:text="@string/edit"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="delete"
+                android:text="@string/delete"
                 tools:ignore="ButtonStyle" />
 
         </LinearLayout>

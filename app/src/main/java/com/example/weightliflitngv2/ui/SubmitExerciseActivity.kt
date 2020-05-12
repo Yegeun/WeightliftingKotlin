@@ -22,7 +22,6 @@ class SubmitExerciseActivity : AppCompatActivity() {
     private lateinit var viewModel: SubmitExerciseViewModel
     lateinit var  textViewName: TextView
     var number = 0
-    var asd = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +32,6 @@ class SubmitExerciseActivity : AppCompatActivity() {
         //names of the different layouts
         val four = findViewById<LinearLayout>(R.id.layout1)
 
-        Toast.makeText(applicationContext,asd, Toast.LENGTH_SHORT).show()
 
         textViewName = findViewById(R.id.textViewDate)
         number = linearLayout.childCount
