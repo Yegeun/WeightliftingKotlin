@@ -24,5 +24,8 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="edit">EDIT</string>
     <string name="delete">DELETE</string>
+    <string name="are_you_a_coach">Are You A Coach?</string>
+    <string name="save">SAVE</string>
+    <string name="email">email</string>
     <!--    embed something in the message as aa variable $-->
 </resources>

@@ -8,6 +8,7 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,7 @@ import com.example.weightliflitngv2.data.NODE_COACH_EMAIL
 import com.example.weightliflitngv2.data.NODE_DATE
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_submit_exercise.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -25,63 +27,58 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sharedPreferences:SharedPreferences
     lateinit var email: String
     lateinit var athleteEmail:String
+    private lateinit var coach:String
 
 override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val mSharedPreference: SharedPreferences =
-            PreferenceManager.getDefaultSharedPreferences(baseContext)
-        email = mSharedPreference.getString("email", null).toString()
-        athleteEmail = mSharedPreference.getString("athlete_email", null).toString()
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
 
-        athleteEmail = athleteEmail.replace(Regex("""[@,.]"""), "_") // replaces with underscore so it can save it
+    val mSharedPreference: SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(baseContext)
+    email = mSharedPreference.getString("email", null).toString()
+    athleteEmail = mSharedPreference.getString("athlete_email", null).toString()
+    coach =  mSharedPreference.getString("coach", null).toString()
 
-        //Offline Database maximum of 10mb
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        val athletes = FirebaseDatabase.getInstance().getReference("athletes")
-        athletes.keepSynced(true)
+    athleteEmail = athleteEmail.replace(Regex("""[@,.]"""), "_") // replaces with underscore so it can save it
+    NODE_COACH_EMAIL=email
+    NODE_ATHLETE_EMAIL=athleteEmail
 
-        //updates current time and date
-        val current = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-        val formatted = current.format(formatter)
-        NODE_DATE = formatted // this puts the current date to a variable
+    //Offline Database maximum of 10mb
+    FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+    val athletes = FirebaseDatabase.getInstance().getReference("athletes")
+    athletes.keepSynced(true)
 
-
-        NODE_COACH_EMAIL=email
-        NODE_ATHLETE_EMAIL=athleteEmail
+    //updates current time and date
+    val current = LocalDateTime.now()
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    val formatted = current.format(formatter)
+    NODE_DATE = formatted // this puts the current date to a variable
 
 //        toast(athleteEmail)
-        if(!hasNetworkAvailable(this)){
-            showDialog()
-        }
-
-
-//        val spinner: Spinner = findViewById(R.id.spinner)
-//// Create an ArrayAdapter using the string array and a default spinner layout
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.planets_array,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            // Specify the layout to use when the list of choices appears
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            // Apply the adapter to the spinner
-//            spinner.adapter = adapter
-//        }
-        buttonAdd.setOnClickListener(){
-            startActivity(Intent( applicationContext, AddAthlete::class.java ))
-        }
-        button_addExercise.setOnClickListener(){
-            startActivity(Intent( applicationContext, SubmitExerciseActivity::class.java))
-        }
-        button_view.setOnClickListener(){
-            startActivity(Intent( applicationContext,ViewExerciseActivity ::class.java))
-        }
-
-
-
+    if(!hasNetworkAvailable(this)){
+        showDialog()
     }
+
+    //checking if user is a Coach or an Athlete
+
+    if(coach=="no") run {
+        button_addExercise.visibility = View.GONE
+    }
+    if(NODE_ATHLETE_EMAIL=="athleteemail"){
+        button_addExercise.visibility = View.GONE
+        button_view.visibility = View.GONE
+    }
+    buttonAdd.setOnClickListener(){
+        startActivity(Intent( applicationContext, AddAthlete::class.java ))
+    }
+    button_addExercise.setOnClickListener(){
+        startActivity(Intent( applicationContext, SubmitExerciseActivity::class.java))
+    }
+    button_view.setOnClickListener(){
+        startActivity(Intent( applicationContext,ViewExerciseActivity ::class.java))
+    }
+
+}
     // Kotlin code sample
 
     // The next line should be the first statement in the file

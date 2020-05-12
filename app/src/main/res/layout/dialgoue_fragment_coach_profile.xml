@@ -13,13 +13,19 @@
             android:id="@+id/edit_text_coach_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="email" />
+            android:hint="@string/email" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/checkbox_coach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/are_you_a_coach" />
 
     <Button
         android:id="@+id/button_save_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save" />
+        android:text="@string/save" />
 
 </LinearLayout>

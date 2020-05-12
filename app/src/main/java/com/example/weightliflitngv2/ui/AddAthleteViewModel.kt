@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.weightliflitngv2.data.Athlete
 import com.example.weightliflitngv2.data.NODE_ATHLETES
+import com.example.weightliflitngv2.data.NODE_ATHLETE_EMAIL
+import com.example.weightliflitngv2.data.NODE_COACH_EMAIL
 import com.google.firebase.database.*
 
 //simply coding
@@ -105,6 +107,13 @@ class AddAthleteViewModel : ViewModel() {
                 }
             }
         })
+    }
+    fun fetchfilteredAthlete() {
+        val dbAthletes =
+            FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
+                .orderByChild("coach")
+                .equalTo(NODE_COACH_EMAIL)
+        dbAthletes.addChildEventListener(childEventListener)
     }
 
     override fun onCleared(){

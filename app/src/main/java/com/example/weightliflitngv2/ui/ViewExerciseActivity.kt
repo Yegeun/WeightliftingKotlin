@@ -1,11 +1,16 @@
 package com.example.weightliflitngv2.ui
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.preference.PreferenceManager
 import com.example.weightliflitngv2.R
 import com.example.weightliflitngv2.data.NODE_ATHLETES
@@ -17,9 +22,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_view_exercise.*
 import java.io.File
-import java.io.FileOutputStream
+
 
 class ViewExerciseActivity : AppCompatActivity() {
+    lateinit var stringoflists: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +34,7 @@ class ViewExerciseActivity : AppCompatActivity() {
             PreferenceManager.getDefaultSharedPreferences(baseContext)
         textView_name.text= mSharedPreference.getString("athlete_email", null).toString()
         textView_date.text= NODE_DATE
+        stringoflists = ""
         fetchAthleteExercises()
 
         //get's a screenshot
@@ -35,14 +42,67 @@ class ViewExerciseActivity : AppCompatActivity() {
 
         button_share.setOnClickListener(){
             val shot = getScreenShot(rootView)
-            toast("this works")
             imageView3.setImageBitmap(shot)
             if (shot != null) {
-                saveBitmap(shot,"hello")
+//                saveBitmap(shot, NODE_DATE)
+//                val path = Environment.getExternalStorageDirectory().absolutePath + "/Screenshots"
+//                val dir = File(path)
+//                val file = File(dir, NODE_DATE)
             }
+            val a=textView_exercise1.text
+            val b=textView_weight1.text
+            val c=textView_set1.text
+            val d=textView_rep1.text
+            val e=textView_exercise2.text
+            val f=textView_weight2.text
+            val g=textView_set2.text
+            val h=textView_rep2.text
+            val i=textView_exercise3.text
+            val j=textView_weight3.text
+            val k=textView_set3.text
+            val l=textView_rep3.text
+            val m=textView_exercise4.text
+            val n=textView_weight4.text
+            val o=textView_set4.text
+            val p=textView_rep4.text
+            stringoflists = "$a $b $c $d\n$e $f $g $h\n$i $j $k $l\n$m $n $o $p"
+            shareText(stringoflists)
+
+
         }
     }
 
+    //https://stackoverflow.com/questions/30196965/how-to-take-a-screenshot-of-current-activity-and-then-share-it
+    private fun getScreenShot(view: View): Bitmap? {
+        val screenView = view.rootView
+        screenView.isDrawingCacheEnabled = true
+        val bitmap = Bitmap.createBitmap(screenView.drawingCache)
+        screenView.isDrawingCacheEnabled = false
+        return bitmap
+    }
+
+    private fun shareImage(file: File) {
+        val uri: Uri = Uri.fromFile(file)
+//        intent.putExtra(Intent.EXTRA_SUBJECT, "")
+//        intent.putExtra(Intent.EXTRA_TEXT, "")
+        val intent = Intent().apply {
+            this.action = Intent.ACTION_SEND
+            this.putExtra(Intent.EXTRA_STREAM, file)
+            this.type = "image/jpeg"
+        }
+        try {
+            startActivity(Intent.createChooser(intent, "Share Screenshot"))
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(applicationContext, "No App Available", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun shareText(text: String){
+        val shareIntent = Intent()
+        shareIntent.action = Intent.ACTION_SEND
+        shareIntent.type="text/plain"
+        shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+        startActivity(Intent.createChooser(shareIntent,"Share Workout"))
+    }
     private fun fetchAthleteExercises(){
         FirebaseDatabase.getInstance().getReference(NODE_ATHLETES)
             .child(NODE_ATHLETE_EMAIL)
@@ -73,39 +133,6 @@ class ViewExerciseActivity : AppCompatActivity() {
             })
     }
 
-    //https://blog.mindorks.com/how-to-programmatically-take-a-screenshot-on-android
-//    private fun getScreenShot(view: View): Bitmap {
-//        val returnedBitmap = Bitmap.createBitmap(200, 500, Bitmap.Config.ARGB_8888)
-//        val canvas = Canvas(returnedBitmap)
-//        val bgDrawable = view.background
-//        if (bgDrawable != null) bgDrawable.draw(canvas)
-//        else canvas.drawColor(Color.WHITE)
-//        view.draw(canvas)
-//        return returnedBitmap
-//    }
-    //https://stackoverflow.com/questions/30196965/how-to-take-a-screenshot-of-current-activity-and-then-share-it
-    private fun getScreenShot(view: View): Bitmap? {
-        val screenView = view.rootView
-        screenView.isDrawingCacheEnabled = true
-        val bitmap = Bitmap.createBitmap(screenView.drawingCache)
-        screenView.isDrawingCacheEnabled = false
-        return bitmap
-    }
-    private fun saveBitmap(bm: Bitmap, fileName: String): File? {
-        val path =
-            Environment.getExternalStorageDirectory().absolutePath + "/Screenshots"
-        val dir = File(path)
-        if (!dir.exists()) dir.mkdirs()
-        val file = File(dir, fileName)
-        try {
-            val fOut = FileOutputStream(file)
-            bm.compress(Bitmap.CompressFormat.PNG, 100, fOut)
-            fOut.flush()
-            fOut.close()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        return file // save the screenshot into the folder that is created as "Screenshots" if it's not existed.
-    }
+
 }
 

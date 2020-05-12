@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Are you a Coach or a Athlete"
+        android:text="Enter User Details Here"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -60,7 +60,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textVeiw_time"
+            android:id="@+id/textView_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

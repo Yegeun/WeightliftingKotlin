@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import com.example.weightliflitngv2.R
 import com.example.weightliflitngv2.data.Athlete
 import kotlinx.android.synthetic.main.dialogue_fragment_athlete_profile.*
+import kotlin.system.exitProcess
 
 
 class ProfileAthleteDialogue: DialogFragment() {
@@ -49,7 +52,8 @@ class ProfileAthleteDialogue: DialogFragment() {
             val editor = prefs.edit()
             editor.putString("athlete_email", email)
             editor.apply()
-
+            Toast.makeText(context,"Successfully Updated", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Please Reload The App", Toast.LENGTH_SHORT).show()
             dismiss()
         }
 

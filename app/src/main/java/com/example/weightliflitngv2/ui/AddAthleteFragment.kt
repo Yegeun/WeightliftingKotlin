@@ -37,9 +37,9 @@ class AddAthleteFragment : Fragment(), RecyclerViewListener {
         recycler_view_athletes.adapter = adapter
 
         // TODO: Use the ViewModel
-        viewModel.fetchAthletes()
-        // viewModel.fetchFilteredAuthors(6) use this lines to fetch specific athletes
-        viewModel.getRealtimeUpdate()
+//        viewModel.fetchAthletes()
+        viewModel.fetchfilteredAthlete() //use this lines to fetch specific athletes
+//        viewModel.getRealtimeUpdate()
 
         viewModel.athletes.observe(viewLifecycleOwner, Observer {
             adapter.setAthletes(it) //

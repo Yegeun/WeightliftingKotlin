@@ -1,10 +1,13 @@
 package com.example.weightliflitngv2.ui
 
+import android.content.Intent
+import android.content.Intent.getIntent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,6 +17,7 @@ import com.example.weightliflitngv2.data.NODE_COACH_PROFILE
 import com.example.weightliflitngv2.data.ProfileCoach
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.dialgoue_fragment_coach_profile.*
+import kotlin.system.exitProcess
 
 
 class ProfileCoachDialogue : DialogFragment() {
@@ -59,8 +63,19 @@ class ProfileCoachDialogue : DialogFragment() {
             //save
             val editor = prefs.edit()
             editor.putString("email", coachProfile.email)
+
+            //check
+            if(checkbox_coach.isChecked){
+                editor.putString("coach","yes")
+            }else{
+                editor.putString("coach","no")
+            }
             editor.apply()
+            Toast.makeText(context,"Successfully Updated",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Please Reload The App",Toast.LENGTH_SHORT).show()
             dismiss()
+
+
         } // end fo the button commits
     }
     fun addCoachProfile(profile: ProfileCoach){
