@@ -58,28 +58,6 @@ class AddAthleteViewModel : ViewModel() {
     }
 
 
-        // to use this call the function using view model get rid of updates and and dbathletes data change
-        // and
-//    dbAthletes.addListenerForSingleValueEvent(object : ValueEventListener {
-//        override fun onCancelled(error: DatabaseError) {}
-//
-//        override fun onDataChange(snapshot: DataSnapshot) {
-        // if its one use
-        // if(snapshotl.exists()) {_author.value = snapshot.getV(Author::class.java}
-//            if (snapshot.exists()) {
-//                val authors = mutableListOf<Author>()
-//                for (authorSnapshot in snapshot.children) {
-//                    val author = authorSnapshot.getValue(Author::class.java)
-//                    author?.id = authorSnapshot.key
-//                    author?.let { authors.add(it) }
-//                }
-//                _authors.value = authors
-//            }// ust hthis if using complete list of things
-//        }
-//    })
-
-
-
     private val childEventListener = object : ChildEventListener{
         override fun onCancelled(error: DatabaseError) {
             TODO("Not yet implemented")

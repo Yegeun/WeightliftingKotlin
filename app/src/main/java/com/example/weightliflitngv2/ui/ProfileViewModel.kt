@@ -5,4 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.example.weightliflitngv2.R
 
 class ProfileViewModel : ViewModel() {
+
+
 }

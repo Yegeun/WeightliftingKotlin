@@ -8,21 +8,22 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.example.weightliflitngv2.R
-import com.example.weightliflitngv2.data.NODE_ATHLETES
+import com.example.weightliflitngv2.data.NODE_ATHLETE_EMAIL
 import com.example.weightliflitngv2.data.NODE_COACH_EMAIL
+import com.example.weightliflitngv2.data.NODE_DATE
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.logging.Logger
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var sharedPreferences:SharedPreferences
     lateinit var email: String
+    lateinit var athleteEmail:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +31,22 @@ class MainActivity : AppCompatActivity() {
         val mSharedPreference: SharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(baseContext)
         email = mSharedPreference.getString("email", null).toString()
+        athleteEmail = mSharedPreference.getString("athlete_email", null).toString()
+
+        athleteEmail = athleteEmail.replace(Regex("""[@,.]"""), "_") // replaces with underscore so it can save it
+
+
+        //updates current time and date
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val formatted = current.format(formatter)
+        NODE_DATE = formatted // this puts the current date to a variable
+
 
         NODE_COACH_EMAIL=email
+        NODE_ATHLETE_EMAIL=athleteEmail
 
+        toast(athleteEmail)
         if(!hasNetworkAvailable(this)){
             showDialog()
         }
@@ -53,6 +67,13 @@ class MainActivity : AppCompatActivity() {
         buttonAdd.setOnClickListener(){
             startActivity(Intent( applicationContext, AddAthlete::class.java ))
         }
+        button_addExercise.setOnClickListener(){
+            startActivity(Intent( applicationContext, SubmitExerciseActivity::class.java))
+        }
+        button_view.setOnClickListener(){
+            startActivity(Intent( applicationContext,ViewExerciseActivity ::class.java))
+        }
+
 
 
     }

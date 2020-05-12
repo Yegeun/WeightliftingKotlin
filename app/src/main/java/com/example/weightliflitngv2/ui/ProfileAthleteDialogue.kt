@@ -47,6 +47,8 @@ class ProfileAthleteDialogue: DialogFragment() {
             val editor = prefs.edit()
             editor.putString("athlete_email", email)
             editor.apply()
+
+
             dismiss()
         }
 

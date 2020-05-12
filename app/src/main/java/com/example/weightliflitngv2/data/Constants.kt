@@ -5,5 +5,5 @@ var NODE_COACH_EMAIL = ""
 var NODE_ATHLETE_EMAIL = "athleteemail"
 var NODE_ATHLETES = "athletes"
 var NODE_DATE = "date"
-const val NODE_ATHLETES_NAME = "athlete_name"
+
 
