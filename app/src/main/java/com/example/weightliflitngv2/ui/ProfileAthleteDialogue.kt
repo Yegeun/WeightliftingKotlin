@@ -9,6 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import com.example.weightliflitngv2.R
+import com.example.weightliflitngv2.data.Athlete
 import kotlinx.android.synthetic.main.dialogue_fragment_athlete_profile.*
 
 
@@ -40,6 +41,7 @@ class ProfileAthleteDialogue: DialogFragment() {
         }
         button_saveProfile.setOnClickListener {
             val email=editText_athleteEmail.text.toString().trim()
+            //save to prefrences
             if(email.isEmpty()){
                 input_layer.error="Errornoinput"
                 return@setOnClickListener
@@ -47,7 +49,6 @@ class ProfileAthleteDialogue: DialogFragment() {
             val editor = prefs.edit()
             editor.putString("athlete_email", email)
             editor.apply()
-
 
             dismiss()
         }

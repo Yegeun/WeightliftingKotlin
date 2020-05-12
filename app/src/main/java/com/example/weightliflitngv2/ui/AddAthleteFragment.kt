@@ -3,6 +3,7 @@
 package com.example.weightliflitngv2.ui
 
 import android.app.AlertDialog
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -68,6 +69,9 @@ class AddAthleteFragment : Fragment(), RecyclerViewListener {
                         viewModel.deleteAthlete(athlete)
                     }
                 }.create().show()
+            }
+            R.id.button_view ->{
+
             }
         }
     }
