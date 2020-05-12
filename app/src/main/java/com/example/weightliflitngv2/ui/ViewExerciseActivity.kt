@@ -3,6 +3,7 @@ package com.example.weightliflitngv2.ui
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
@@ -15,6 +16,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_view_exercise.*
+import java.io.File
+import java.io.FileOutputStream
 
 class ViewExerciseActivity : AppCompatActivity() {
 
@@ -31,13 +34,12 @@ class ViewExerciseActivity : AppCompatActivity() {
         val rootView = window.decorView.findViewById<View>(android.R.id.content)
 
         button_share.setOnClickListener(){
-//            val message: String = "hello"
-//            getScreenShot(layout0)
-//            val intent = Intent()
-//            intent.action= Intent.ACTION_SEND
-//            intent.putExtra(Intent.EXTRA_TEXT,message)
-//            intent.type = "text/plain"
-//            startActivity(Intent.createChooser(intent, "Please select app:"))
+            val shot = getScreenShot(rootView)
+            toast("this works")
+            imageView3.setImageBitmap(shot)
+            if (shot != null) {
+                saveBitmap(shot,"hello")
+            }
         }
     }
 
@@ -81,10 +83,29 @@ class ViewExerciseActivity : AppCompatActivity() {
 //        view.draw(canvas)
 //        return returnedBitmap
 //    }
-    fun takeScreenshot(): Bitmap? {
-        val rootView = findViewById<View>(android.R.id.content).rootView
-        rootView.isDrawingCacheEnabled = true
-        return rootView.drawingCache
+    //https://stackoverflow.com/questions/30196965/how-to-take-a-screenshot-of-current-activity-and-then-share-it
+    private fun getScreenShot(view: View): Bitmap? {
+        val screenView = view.rootView
+        screenView.isDrawingCacheEnabled = true
+        val bitmap = Bitmap.createBitmap(screenView.drawingCache)
+        screenView.isDrawingCacheEnabled = false
+        return bitmap
+    }
+    private fun saveBitmap(bm: Bitmap, fileName: String): File? {
+        val path =
+            Environment.getExternalStorageDirectory().absolutePath + "/Screenshots"
+        val dir = File(path)
+        if (!dir.exists()) dir.mkdirs()
+        val file = File(dir, fileName)
+        try {
+            val fOut = FileOutputStream(file)
+            bm.compress(Bitmap.CompressFormat.PNG, 100, fOut)
+            fOut.flush()
+            fOut.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return file // save the screenshot into the folder that is created as "Screenshots" if it's not existed.
     }
 }
 
