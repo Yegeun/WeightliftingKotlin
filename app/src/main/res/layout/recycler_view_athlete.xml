@@ -45,14 +45,13 @@
                 android:text="@string/view"
                 tools:ignore="ButtonStyle" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/button_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="#FFFFFF"
-                app:srcCompat="@drawable/edit"
-                android:contentDescription="@string/todo" />
+                android:backgroundTint="#FF9800"
+                android:text="@string/edit" />
 
             <ImageButton
                 android:id="@+id/button_delete"

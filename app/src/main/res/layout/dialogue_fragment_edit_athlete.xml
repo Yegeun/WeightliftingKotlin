@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
-        android:text="Edit Athlete"
+        android:text="@string/edit_athlete"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -25,16 +25,16 @@
             android:id="@+id/edit_text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="name" />
+            android:hint="@string/name" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button_add_athlete"
+        android:id="@+id/button_update_athlete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FF9800"
-        android:text="Update"
+        android:text="@string/update"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

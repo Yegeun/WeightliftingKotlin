@@ -13,6 +13,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.weightliflitngv2.R
 import com.example.weightliflitngv2.data.Athlete
 import kotlinx.android.synthetic.main.dialogue_fragment_add_athlete.*
+import kotlinx.android.synthetic.main.dialogue_fragment_add_athlete.edit_text_name
+import kotlinx.android.synthetic.main.dialogue_fragment_add_athlete.input_layout_name
+import kotlinx.android.synthetic.main.dialogue_fragment_edit_athlete.*
+import kotlinx.android.synthetic.main.recycler_view_athlete.*
 
 
 class EditAthleteDialogueFragment(
@@ -50,7 +54,7 @@ class EditAthleteDialogueFragment(
             dismiss()
         })
 
-        button_add_athlete.setOnClickListener{
+        button_update_athlete.setOnClickListener{
             val name = edit_text_name.text.toString().trim()
 
             if(name.isEmpty()){ //check if they are a coach if it has a name

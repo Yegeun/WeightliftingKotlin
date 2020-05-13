@@ -19,7 +19,7 @@ import com.example.weightliflitngv2.data.NODE_COACH_EMAIL
 import com.example.weightliflitngv2.data.NODE_DATE
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_submit_exercise.*
+import kotlinx.android.synthetic.main.dialogue_fragment_edit_athlete.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -62,13 +62,18 @@ override fun onCreate(savedInstanceState: Bundle?) {
     //checking if user is a Coach or an Athlete
 
     if(coach=="no") run {
-        button_addExercise.visibility = View.GONE
+        buttonAddAthlete.visibility = View.GONE
+    }else{
+        buttonAddAthlete.visibility = View.VISIBLE
     }
-    if(NODE_ATHLETE_EMAIL=="athleteemail"){
+    if(NODE_ATHLETE_EMAIL=="athleteemail"|| NODE_ATHLETE_EMAIL=="none"){
         button_addExercise.visibility = View.GONE
         button_view.visibility = View.GONE
+    }else{
+        button_addExercise.visibility = View.VISIBLE
+        button_view.visibility = View.VISIBLE
     }
-    buttonAdd.setOnClickListener(){
+    buttonAddAthlete.setOnClickListener(){
         startActivity(Intent( applicationContext, AddAthlete::class.java ))
     }
     button_addExercise.setOnClickListener(){

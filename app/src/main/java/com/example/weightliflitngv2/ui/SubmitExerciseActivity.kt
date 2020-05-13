@@ -35,7 +35,7 @@ class SubmitExerciseActivity : AppCompatActivity() {
 
         textViewName = findViewById(R.id.textViewDate)
         number = linearLayout.childCount
-        Toast.makeText(applicationContext,number.toString(), Toast.LENGTH_SHORT).show()
+//        Toast.makeText(applicationContext,number.toString(), Toast.LENGTH_SHORT).show() //Currently 3
 //        hey = viewModel.add()
 //        Toast.makeText(applicationContext,hey, Toast.LENGTH_SHORT ).show()
 
@@ -93,8 +93,8 @@ class SubmitExerciseActivity : AppCompatActivity() {
                 exercise.exercise4 = null
             }
             viewModel.addExercise(exercise)
+            toast("The Submission To The Database Has Been Successful")
 
-            //TODO Create alert diaglogue so that it notifies user
         }
     }
 }
