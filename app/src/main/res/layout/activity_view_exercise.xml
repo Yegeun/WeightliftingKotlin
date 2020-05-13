@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Exercise"
+            android:text="EXERCISE"
             android:textSize="20sp" />
 
         <TextView
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Weight"
+            android:text="WEIGHT"
             android:textSize="20sp" />
 
         <TextView
@@ -215,16 +215,11 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/button_share"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SHARE" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@drawable/social-media.png" />
+        android:backgroundTint="#BC10DA"
+        app:srcCompat="@drawable/network" />
 
 </LinearLayout>

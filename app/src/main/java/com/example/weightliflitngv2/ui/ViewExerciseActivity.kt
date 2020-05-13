@@ -42,7 +42,7 @@ class ViewExerciseActivity : AppCompatActivity() {
 
         button_share.setOnClickListener(){
             val shot = getScreenShot(rootView)
-            imageView3.setImageBitmap(shot)
+//            imageView3.setImageBitmap(shot)
             if (shot != null) {
 //                saveBitmap(shot, NODE_DATE)
 //                val path = Environment.getExternalStorageDirectory().absolutePath + "/Screenshots"
@@ -65,7 +65,7 @@ class ViewExerciseActivity : AppCompatActivity() {
             val n=textView_weight4.text
             val o=textView_set4.text
             val p=textView_rep4.text
-            stringoflists = "$a $b $c $d\n$e $f $g $h\n$i $j $k $l\n$m $n $o $p"
+            stringoflists = "Exercise,Weight,Sets,Reps\n$a $b $c $d\n$e $f $g $h\n$i $j $k $l\n$m $n $o $p"
             shareText(stringoflists)
 
 

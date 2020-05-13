@@ -33,6 +33,7 @@
         android:id="@+id/button_add_athlete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FF9800"
         android:text="Update"
         android:textColor="@android:color/white" />
 

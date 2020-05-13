@@ -5,7 +5,8 @@
     android:id="@+id/linearlayout0"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TextView
         android:id="@+id/textView"
@@ -13,7 +14,8 @@
         android:layout_height="match_parent"
         android:text="Profile"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
@@ -34,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#673AB7"
             android:text="Coach" />
 
         <Button
@@ -41,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#03A9F4"
             android:text="athlete" />
 
 
@@ -53,11 +57,11 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="310dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="What Time woud you like your Reminder"
-            android:textSize="16sp" />
+            android:text="Current Reminder Time"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textView_time"
@@ -65,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="00:00am"
-            android:textSize="16sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -80,6 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#8BC34A"
             android:text="Set Alarm" />
 
         <Button
@@ -87,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#F44336"
             android:text="Cancel Alarm" />
 
     </LinearLayout>
