@@ -1,14 +1,174 @@
-img{
-    width: 50%;
+@charset "utf-8";
+/*copied off lean Manfred's' Code*/
+body {
+	/* Exercise 1: font: 14px/1.4, 1 em = 16px,
+	 /1.4 means line-height = 1.4 * font-size */
+	font: 0.875em/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background-color: lightblue;;
+	margin: 0;
+	padding: 0;
+	color: #000;
 }
-@media (max-width: 500px) {
-    body{
-        background-color: red;
+header, section, footer, aside, article, figure {
+	display: block;
+}
+ul, ol, dl {
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p, a {
+	margin-top: 0;
+	padding-right: 2.5%; /* Exercise 3: 15px is changed to 2.5% of article width 600px */
+	padding-left: 2.5%; /* Exercise 3: 15px is changed to 2.5% of article width 600px */
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: Arial;
+}
+a img {
+	border: none;
+}
+a:link, a:visited {
+	color: #0B486B;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus {
+	text-decoration: none;
+}
+#wrapper {
+	/* Exercise 2:
+	For the wrapper, set it to 100% width */
+	width: 100%; /* original width:960px */
+	max-width:960px; /* but limit its width to less than 960px, */
+	min-width:350px; /* and greater than 350px */
+	margin: 0 auto;
+	background-color: #4087BD;
+	/* Exercise 4 and 5:*/
+	display:flex;
+	flex-wrap:wrap;
+}
+
+header {
+	width:100%;/* Exercise 4 and 5 */
+	background-color: #0B5187;
+	overflow: hidden;
+}
+header h1 {
+	margin: 0;
+	font-size: 3.43em; /* Exercise 1: font-size: 48px; 1em = 14px */
+}
+header img {
+	float: left;
+	margin-right: 1.04%; /* Exercise 3: 10px is changed to 1.04% of 960px */
+}
+nav {
+	clear: left;
+	float: left;
+	width: 18.75%; /* Exercise 2: original width: 180px, out of wrapper 960px */
+}
+nav ul {
+	list-style: none;
+}
+nav ul li {
+	background-color: #4087BD;
+	margin-bottom: 1.67%; /* Exercise 3: 3px is changed to 1.67% of nav width 180px */
+	font-size: 1.14em; /* Exercise 1: font-size: 16px; 1 em = 14px */
+}
+nav ul a:link, nav ul a:visited {
+	padding: 2.78% 2.78% 2.78% 8.33%; /* Exercise 3: padding 5px 5px 5px 15px represent top right bottom left, changed to percentages of nav width 180px */
+	display: block;
+	width: 88.88%; /* Exercise 2: original width: 160px, out of nav 180px */
+	text-decoration: none;
+	color: #0B486B;
+}
+nav ul a:hover, nav ul a:active, nav ul a:focus {
+	background-color: #0B486B;
+	color: #FFF;
+}
+article {
+	padding: 0;
+	width: 62.5%; /* Exercise 2: original width: 600px, out of wrapper 960px */
+	float: left;
+	background-color: #FFFFFF;
+}
+article h1 {
+	font-size: 2.57em; /* Exercise 1: font-size: 36px; 1 em = 14px */
+}
+article h2 {
+	font-size: 1.71em; /* Exercise 1: font-size: 24px; 1 em = 14px */
+	margin-bottom: 0;
+	color: #d60201;
+}
+blockquote p {
+	padding: 0 2.88%; /* Exercise 3: original p padding left right is 15px, percentage of blockquote width 520px */
+}
+/* Exercise 4: resizable image*/
+img {
+	max-width: 50%;
+}
+aside {
+	float: left;
+	width: 18.74%;  /* Exercise 2: original width: 180px, out of wrapper 960px */
+	background-color: #4087BD;
+	color: #fff;
+	padding: 1.04% 0; /* Exercise 3: padding: 10px 0, percentage of 960px */
+}
+aside h1 {
+	padding: 0 8.33%; /* Exercise 3: original h1 padding left right is 15px, percentage of aside width 180px */
+	font-size: 1.43em; /* Exercise 1: font-size: 20px; 1 em = 14px */
+}
+aside ol {
+	font-size: 0.86em; /* Exercise 1: font-size: 12px; 1 em = 14px */
+	margin: 0 0 11.11% 11.11%; /* Exercise 3:  margin: 0 0 20px 20px, percentage of aside width 180px */
+}
+footer {
+	width:100%; /* Exercise 4 and 5 */
+	padding: 1.04% 0; /* Exercise 3:  padding: 10px 0, percentage of screen width 960px */
+	background-color: #0B5187;
+	clear: both;
+}
+
+/* Exercise 4 and 5: */
+@media screen and (max-width:439px){
+	header h1{
+		font-size:2em;
+	}
+	article h1{
+		font-size:1em;
+	}
+	img {
+    	max-width: 70%;
     }
+	nav, article, aside {
+		width:100%;
+	}
+
 }
-.section1{
-    color: blue;
-}
-.section1 h2{
-    color: red;
+
+@media screen and (min-width:440px) and (max-width:760px){
+	header h1{
+		font-size:3em;
+	}
+	article h1{
+		font-size:1.5em;
+	}
+	nav{
+		width:30%;
+		padding:0;
+		order:1;
+	}
+	aside{
+		width:70%;
+		padding:0;
+		order:2;
+	}
+	article{
+		width:100%;
+		order:3;
+	}
+	footer{
+		order:4;
+	}
+	img {
+        	max-width: 50%;
+        }
 }
