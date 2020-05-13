@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
             android:id="@+id/text_view_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="24sp"
             tools:text="Yegeun Ji" />
 
         <View
@@ -34,29 +35,33 @@
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/button_view_exercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="VIEW"
+                android:backgroundTint="#2196F3"
+                android:text="@string/view"
                 tools:ignore="ButtonStyle" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/button_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/edit"
-                tools:ignore="ButtonStyle" />
+                android:backgroundTint="#FFFFFF"
+                app:srcCompat="@drawable/edit"
+                android:contentDescription="@string/todo" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/button_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/delete"
-                tools:ignore="ButtonStyle" />
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="@string/delete"
+                app:srcCompat="@drawable/ic_delete" />
 
         </LinearLayout>
     </RelativeLayout>

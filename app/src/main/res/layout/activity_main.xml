@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:layout_weight="2"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.MainActivity"
+    android:background="@drawable/mainbackground">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -28,12 +29,14 @@
         android:id="@+id/button_addExercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#2196F3"
         android:text="Submit Training" />
 
     <Button
         android:id="@+id/button_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#2196F3"
         android:text="View Todays Training" />
 
     <Button
@@ -41,7 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="addAthlete"
+        android:backgroundTint="#673AB7"
+        android:text="Add Athlete"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout" />
 
 </LinearLayout>

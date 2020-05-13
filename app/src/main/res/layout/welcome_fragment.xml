@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.WelcomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="4">
+        android:layout_height="wrap_content"
+        android:weightSum="10">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="36dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="HOMEPAGE"
-            android:textSize="18sp" />
+            android:layout_weight="8"
+            android:gravity="left"
+            android:paddingStart="5dp"
+            android:text="@string/main_menu"
+            android:textColor="#E91E63"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_profile"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="PROFILE" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/user" />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_help"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="HELP" />
+            android:backgroundTint="#0C0C0C"
+            android:contentDescription="@string/todo"
+            android:src="@android:drawable/ic_menu_help" />
+
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

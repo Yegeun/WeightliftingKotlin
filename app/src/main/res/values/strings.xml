@@ -27,5 +27,9 @@
     <string name="are_you_a_coach">Are You A Coach?</string>
     <string name="save">SAVE</string>
     <string name="email">email</string>
+    <string name="main_menu">MAIN MENU</string>
+    <string name="profile">PROFILE</string>
+    <string name="todo">TODO</string>
+    <string name="view">VIEW</string>
     <!--    embed something in the message as aa variable $-->
 </resources>
