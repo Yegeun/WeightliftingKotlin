@@ -129,20 +129,20 @@ class ProfileActivity : AppCompatActivity() {
                     Log.d("ProfileActivity", "Create: " + Date().toString())
 
                     //notification
-                    notificationManager =
-                        getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                    notificationChannel =
-                        NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
-                    notificationChannel.enableLights(true)
-                    notificationChannel.lightColor = Color.GREEN
-                    notificationChannel.enableVibration(false)
-                    notificationManager.createNotificationChannel(notificationChannel)
-                    builder = Notification.Builder(this, channelId)
-                        .setContentTitle("Reminder Set")
-                        .setContentText("A Reminder has been set")
-                        .setSmallIcon(R.mipmap.ic_launcher_round)
-                        .setContentIntent(pendingIntent2)
-                    notificationManager.notify(1001, builder.build())
+//                    notificationManager =
+//                        getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//                    notificationChannel =
+//                        NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
+//                    notificationChannel.enableLights(true)
+//                    notificationChannel.lightColor = Color.GREEN
+//                    notificationChannel.enableVibration(false)
+//                    notificationManager.createNotificationChannel(notificationChannel)
+//                    builder = Notification.Builder(this, channelId)
+//                        .setContentTitle("Reminder Set")
+//                        .setContentText("A Reminder has been set")
+//                        .setSmallIcon(R.mipmap.ic_launcher_round)
+//                        .setContentIntent(pendingIntent2)
+//                    notificationManager.notify(1001, builder.build())
 
 
                     //save
@@ -166,7 +166,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
     }
-    class Receiver(): BroadcastReceiver() {
+    class Receiver(): BroadcastReceiver(){
         private var NOTIFICATION_ID = "notification-id"
         var NOTIFICATION = "notification"
         lateinit var notificationChannel: NotificationChannel
@@ -176,21 +176,22 @@ class ProfileActivity : AppCompatActivity() {
         override fun onReceive(context: Context?, intent: Intent?) {
             Log.d("ProfileActivity", "Reciever: " + Date().toString())
             Toast.makeText(context,"This is a reminder to login apps",Toast.LENGTH_LONG).show()
-
-//            val notificationManager =
-//                context!!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//            notificationChannel =
-//                NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
-//            notificationChannel.enableLights(true)
-//            notificationChannel.lightColor = Color.GREEN
-//            notificationChannel.enableVibration(false)
-//            notificationManager.createNotificationChannel(notificationChannel)
-//            builder = Notification.Builder(context, channelId)
-//                .setContentTitle("Reminder Set")
-//                .setContentText("A Reminder has been set")
-//                .setSmallIcon(R.mipmap.ic_launcher_round)
-//                .setContentIntent(pendingIntent)
-//            notificationManager.notify(1002, builder.build())
+            val intent= Intent(context,ProfileActivity::class.java)
+            val pendingIntent=PendingIntent.getActivity(context,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
+            val notificationManager =
+                context!!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationChannel =
+                NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.GREEN
+            notificationChannel.enableVibration(false)
+            notificationManager.createNotificationChannel(notificationChannel)
+            builder = Notification.Builder(context, channelId)
+                .setContentTitle("Reminder Set")
+                .setContentText("A Reminder has been set")
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentIntent(pendingIntent)
+            notificationManager.notify(1002, builder.build())
         }
     }
 }
